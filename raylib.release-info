@@ -1,0 +1,3 @@
+(repo git "https://github.com/meowstr/chicken-raylib.git")
+(uri targz "https://github.com/meowstr/chicken-raylib/archive/refs/tags/v{egg-release}.tar.gz")
+(release "1.0")
