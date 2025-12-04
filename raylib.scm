@@ -71,7 +71,6 @@ void FromVector2 (float * x, Vector2 v) {x[0]=v.x; x[1]=v.y;}
     (camera2d-target-helper out camera)
     out))
 
-
 (define LIGHTGRAY  (make-color 200 200 200 255))
 (define GRAY       (make-color 130 130 130 255))
 (define DARKGRAY   (make-color 80  80  80  255))
@@ -219,7 +218,6 @@ void FromVector2 (float * x, Vector2 v) {x[0]=v.x; x[1]=v.y;}
 (define KEY_VOLUME_UP        24  )      ; Key: Android volume up button
 (define KEY_VOLUME_DOWN      25  )      ; Key: Android volume down button
 
-
 (define MOUSE_BUTTON_LEFT    0) 
 (define MOUSE_BUTTON_RIGHT   1) 
 (define MOUSE_BUTTON_MIDDLE  2) 
@@ -356,7 +354,6 @@ void FromVector2 (float * x, Vector2 v) {x[0]=v.x; x[1]=v.y;}
 (define draw-texture-pro
   (foreign-lambda* void ((Texture* texture) (Rectangle source) (Rectangle dest) (Vector2 origin) (float rotation) (Color tint)) 
                    "DrawTexturePro(*texture, ToRectangle(source), ToRectangle(dest), ToVector2(origin), rotation, ToColor(tint));"))
-
 
 ;; Text drawing functions
 (define draw-text 

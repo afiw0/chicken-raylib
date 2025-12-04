@@ -6,5 +6,4 @@
                foreigners)
  (component-options 
    (link-options "-L" "-lraylib"))
- (components (extension raylib))
-   )
+ (components (extension raylib)))
