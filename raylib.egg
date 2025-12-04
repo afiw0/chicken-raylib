@@ -1,6 +1,6 @@
 ((author "Meowster")
  (synopsis "Bindings for raylib: A simple and easy-to-use library to enjoy videogames programming")
- (version "1.0")
+ (version "1.0.1")
  (license "MIT")
  (category graphics)
  (dependencies (chicken "5.3.0")
