@@ -6,12 +6,12 @@
 (let loop ()
   (with-drawing
    (lambda ()
-     (clear-background RAYWHITE)
+     (clear-background color/raywhite)
      (draw-text "Congrats! You created your first window!"
                 190
                 200
                 20
-                LIGHTGRAY)))
+                color/light-gray)))
   (unless (window-should-close?)
     (loop)))
 

@@ -1,10 +1,10 @@
 (module raylib *
 
-(import scheme)
-(import (chicken base))
-(import (chicken foreign))
-(import foreigners)
-(import (srfi-4))
+(import (scheme)
+        (chicken base)
+        (chicken foreign)
+        (foreigners)
+        (srfi-4))
 
 (foreign-declare "#include <raylib.h>")
 
@@ -103,160 +103,160 @@
     out))
 
 
-(define LIGHTGRAY  (make-color 200 200 200 255))
-(define GRAY       (make-color 130 130 130 255))
-(define DARKGRAY   (make-color 80  80  80  255))
-(define YELLOW     (make-color 253 249 0   255))
-(define GOLD       (make-color 255 203 0   255))
-(define ORANGE     (make-color 255 161 0   255))
-(define PINK       (make-color 255 109 194 255))
-(define RED        (make-color 230 41  55  255))
-(define MAROON     (make-color 190 33  55  255))
-(define GREEN      (make-color 0   228 48  255))
-(define LIME       (make-color 0   158 47  255))
-(define DARKGREEN  (make-color 0   117 44  255))
-(define SKYBLUE    (make-color 102 191 255 255))
-(define BLUE       (make-color 0   121 241 255))
-(define DARKBLUE   (make-color 0   82  172 255))
-(define PURPLE     (make-color 200 122 255 255))
-(define VIOLET     (make-color 135 60  190 255))
-(define DARKPURPLE (make-color 112 31  126 255))
-(define BEIGE      (make-color 211 176 131 255))
-(define BROWN      (make-color 127 106 79  255))
-(define DARKBROWN  (make-color 76  63  47  255))
-(define WHITE      (make-color 255 255 255 255))
-(define BLACK      (make-color 0   0   0   255))
-(define BLANK      (make-color 0   0   0   0  ))
-(define MAGENTA    (make-color 255 0   255 255))
-(define RAYWHITE   (make-color 245 245 245 255))
+(define color/light-gray  (make-color 200 200 200 255))
+(define color/gray        (make-color 130 130 130 255))
+(define color/dark-gray   (make-color 80  80  80  255))
+(define color/yellow      (make-color 253 249 0   255))
+(define color/gold        (make-color 255 203 0   255))
+(define color/orange      (make-color 255 161 0   255))
+(define color/pink        (make-color 255 109 194 255))
+(define color/red         (make-color 230 41  55  255))
+(define color/maroon      (make-color 190 33  55  255))
+(define color/green       (make-color 0   228 48  255))
+(define color/lime        (make-color 0   158 47  255))
+(define color/dark-green  (make-color 0   117 44  255))
+(define color/sky-blue    (make-color 102 191 255 255))
+(define color/blue        (make-color 0   121 241 255))
+(define color/dark-blue   (make-color 0   82  172 255))
+(define color/purple      (make-color 200 122 255 255))
+(define color/violet      (make-color 135 60  190 255))
+(define color/dark-purple (make-color 112 31  126 255))
+(define color/beige       (make-color 211 176 131 255))
+(define color/brown       (make-color 127 106 79  255))
+(define color/dark-brown  (make-color 76  63  47  255))
+(define color/white       (make-color 255 255 255 255))
+(define color/black       (make-color 0   0   0   255))
+(define color/blank       (make-color 0   0   0   0  ))
+(define color/magenta     (make-color 255 0   255 255))
+(define color/raywhite    (make-color 245 245 245 255))
 
-(define LOG_ALL     0)
-(define LOG_TRACE   1)
-(define LOG_DEBUG   2)
-(define LOG_INFO    3)
-(define LOG_WARNING 4)
-(define LOG_ERROR   5)
-(define LOG_FATAL   6)
-(define LOG_NONE    7)
+(define log/all     0)
+(define log/trace   1)
+(define log/debug   2)
+(define log/info    3)
+(define log/warning 4)
+(define log/error   5)
+(define log/fatal   6)
+(define log/none    7)
 
-(define KEY_NULL             0   )      ; Key: NULL, used for no key pressed
-(define KEY_APOSTROPHE       39  )      ; Key: '
-(define KEY_COMMA            44  )      ; Key: ,
-(define KEY_MINUS            45  )      ; Key: -
-(define KEY_PERIOD           46  )      ; Key: .
-(define KEY_SLASH            47  )      ; Key: /
-(define KEY_ZERO             48  )      ; Key: 0
-(define KEY_ONE              49  )      ; Key: 1
-(define KEY_TWO              50  )      ; Key: 2
-(define KEY_THREE            51  )      ; Key: 3
-(define KEY_FOUR             52  )      ; Key: 4
-(define KEY_FIVE             53  )      ; Key: 5
-(define KEY_SIX              54  )      ; Key: 6
-(define KEY_SEVEN            55  )      ; Key: 7
-(define KEY_EIGHT            56  )      ; Key: 8
-(define KEY_NINE             57  )      ; Key: 9
-(define KEY_SEMICOLON        59  )      ; Key: ;
-(define KEY_EQUAL            61  )      ; Key: =
-(define KEY_A                65  )      ; Key: A | a
-(define KEY_B                66  )      ; Key: B | b
-(define KEY_C                67  )      ; Key: C | c
-(define KEY_D                68  )      ; Key: D | d
-(define KEY_E                69  )      ; Key: E | e
-(define KEY_F                70  )      ; Key: F | f
-(define KEY_G                71  )      ; Key: G | g
-(define KEY_H                72  )      ; Key: H | h
-(define KEY_I                73  )      ; Key: I | i
-(define KEY_J                74  )      ; Key: J | j
-(define KEY_K                75  )      ; Key: K | k
-(define KEY_L                76  )      ; Key: L | l
-(define KEY_M                77  )      ; Key: M | m
-(define KEY_N                78  )      ; Key: N | n
-(define KEY_O                79  )      ; Key: O | o
-(define KEY_P                80  )      ; Key: P | p
-(define KEY_Q                81  )      ; Key: Q | q
-(define KEY_R                82  )      ; Key: R | r
-(define KEY_S                83  )      ; Key: S | s
-(define KEY_T                84  )      ; Key: T | t
-(define KEY_U                85  )      ; Key: U | u
-(define KEY_V                86  )      ; Key: V | v
-(define KEY_W                87  )      ; Key: W | w
-(define KEY_X                88  )      ; Key: X | x
-(define KEY_Y                89  )      ; Key: Y | y
-(define KEY_Z                90  )      ; Key: Z | z
-(define KEY_LEFT_BRACKET     91  )      ; Key: [
-(define KEY_BACKSLASH        92  )      ; Key: '\'
-(define KEY_RIGHT_BRACKET    93  )      ; Key: ]
-(define KEY_GRAVE            96  )      ; Key: `
-(define KEY_SPACE            32  )      ; Key: Space
-(define KEY_ESCAPE           256 )      ; Key: Esc
-(define KEY_ENTER            257 )      ; Key: Enter
-(define KEY_TAB              258 )      ; Key: Tab
-(define KEY_BACKSPACE        259 )      ; Key: Backspace
-(define KEY_INSERT           260 )      ; Key: Ins
-(define KEY_DELETE           261 )      ; Key: Del
-(define KEY_RIGHT            262 )      ; Key: Cursor right
-(define KEY_LEFT             263 )      ; Key: Cursor left
-(define KEY_DOWN             264 )      ; Key: Cursor down
-(define KEY_UP               265 )      ; Key: Cursor up
-(define KEY_PAGE_UP          266 )      ; Key: Page up
-(define KEY_PAGE_DOWN        267 )      ; Key: Page down
-(define KEY_HOME             268 )      ; Key: Home
-(define KEY_END              269 )      ; Key: End
-(define KEY_CAPS_LOCK        280 )      ; Key: Caps lock
-(define KEY_SCROLL_LOCK      281 )      ; Key: Scroll down
-(define KEY_NUM_LOCK         282 )      ; Key: Num lock
-(define KEY_PRINT_SCREEN     283 )      ; Key: Print screen
-(define KEY_PAUSE            284 )      ; Key: Pause
-(define KEY_F1               290 )      ; Key: F1
-(define KEY_F2               291 )      ; Key: F2
-(define KEY_F3               292 )      ; Key: F3
-(define KEY_F4               293 )      ; Key: F4
-(define KEY_F5               294 )      ; Key: F5
-(define KEY_F6               295 )      ; Key: F6
-(define KEY_F7               296 )      ; Key: F7
-(define KEY_F8               297 )      ; Key: F8
-(define KEY_F9               298 )      ; Key: F9
-(define KEY_F10              299 )      ; Key: F10
-(define KEY_F11              300 )      ; Key: F11
-(define KEY_F12              301 )      ; Key: F12
-(define KEY_LEFT_SHIFT       340 )      ; Key: Shift left
-(define KEY_LEFT_CONTROL     341 )      ; Key: Control left
-(define KEY_LEFT_ALT         342 )      ; Key: Alt left
-(define KEY_LEFT_SUPER       343 )      ; Key: Super left
-(define KEY_RIGHT_SHIFT      344 )      ; Key: Shift right
-(define KEY_RIGHT_CONTROL    345 )      ; Key: Control right
-(define KEY_RIGHT_ALT        346 )      ; Key: Alt right
-(define KEY_RIGHT_SUPER      347 )      ; Key: Super right
-(define KEY_KB_MENU          348 )      ; Key: KB menu
-(define KEY_KP_0             320 )      ; Key: Keypad 0
-(define KEY_KP_1             321 )      ; Key: Keypad 1
-(define KEY_KP_2             322 )      ; Key: Keypad 2
-(define KEY_KP_3             323 )      ; Key: Keypad 3
-(define KEY_KP_4             324 )      ; Key: Keypad 4
-(define KEY_KP_5             325 )      ; Key: Keypad 5
-(define KEY_KP_6             326 )      ; Key: Keypad 6
-(define KEY_KP_7             327 )      ; Key: Keypad 7
-(define KEY_KP_8             328 )      ; Key: Keypad 8
-(define KEY_KP_9             329 )      ; Key: Keypad 9
-(define KEY_KP_DECIMAL       330 )      ; Key: Keypad .
-(define KEY_KP_DIVIDE        331 )      ; Key: Keypad /
-(define KEY_KP_MULTIPLY      332 )      ; Key: Keypad *
-(define KEY_KP_SUBTRACT      333 )      ; Key: Keypad -
-(define KEY_KP_ADD           334 )      ; Key: Keypad +
-(define KEY_KP_ENTER         335 )      ; Key: Keypad Enter
-(define KEY_KP_EQUAL         336 )      ; Key: Keypad =
-(define KEY_BACK             4   )      ; Key: Android back button
-(define KEY_MENU             5   )      ; Key: Android menu button
-(define KEY_VOLUME_UP        24  )      ; Key: Android volume up button
-(define KEY_VOLUME_DOWN      25  )      ; Key: Android volume down button
+(define key/null             0   )      ; key: null, used for no key pressed
+(define key/apostrophe       39  )      ; key: '
+(define key/comma            44  )      ; key: ,
+(define key/minus            45  )      ; key: -
+(define key/period           46  )      ; key: .
+(define key/slash            47  )      ; key: /
+(define key/zero             48  )      ; key: 0
+(define key/one              49  )      ; key: 1
+(define key/two              50  )      ; key: 2
+(define key/three            51  )      ; key: 3
+(define key/four             52  )      ; key: 4
+(define key/five             53  )      ; key: 5
+(define key/six              54  )      ; key: 6
+(define key/seven            55  )      ; key: 7
+(define key/eight            56  )      ; key: 8
+(define key/nine             57  )      ; key: 9
+(define key/semicolon        59  )      ; key: ;
+(define key/equal            61  )      ; key: =
+(define key/a                65  )      ; key: a | a
+(define key/b                66  )      ; key: b | b
+(define key/c                67  )      ; key: c | c
+(define key/d                68  )      ; key: d | d
+(define key/e                69  )      ; key: e | e
+(define key/f                70  )      ; key: f | f
+(define key/g                71  )      ; key: g | g
+(define key/h                72  )      ; key: h | h
+(define key/i                73  )      ; key: i | i
+(define key/j                74  )      ; key: j | j
+(define key/k                75  )      ; key: k | k
+(define key/l                76  )      ; key: l | l
+(define key/m                77  )      ; key: m | m
+(define key/n                78  )      ; key: n | n
+(define key/o                79  )      ; key: o | o
+(define key/p                80  )      ; key: p | p
+(define key/q                81  )      ; key: q | q
+(define key/r                82  )      ; key: r | r
+(define key/s                83  )      ; key: s | s
+(define key/t                84  )      ; key: t | t
+(define key/u                85  )      ; key: u | u
+(define key/v                86  )      ; key: v | v
+(define key/w                87  )      ; key: w | w
+(define key/x                88  )      ; key: x | x
+(define key/y                89  )      ; key: y | y
+(define key/z                90  )      ; key: z | z
+(define key/left-bracket     91  )      ; key: [
+(define key/backslash        92  )      ; key: '\'
+(define key/right-bracket    93  )      ; key: ]
+(define key/grave            96  )      ; key: `
+(define key/space            32  )      ; key: space
+(define key/escape           256 )      ; key: esc
+(define key/enter            257 )      ; key: enter
+(define key/tab              258 )      ; key: tab
+(define key/backspace        259 )      ; key: backspace
+(define key/insert           260 )      ; key: ins
+(define key/delete           261 )      ; key: del
+(define key/right            262 )      ; key: cursor right
+(define key/left             263 )      ; key: cursor left
+(define key/down             264 )      ; key: cursor down
+(define key/up               265 )      ; key: cursor up
+(define key/page-up          266 )      ; key: page up
+(define key/page-down        267 )      ; key: page down
+(define key/home             268 )      ; key: home
+(define key/end              269 )      ; key: end
+(define key/caps-lock        280 )      ; key: caps lock
+(define key/scroll-lock      281 )      ; key: scroll down
+(define key/num-lock         282 )      ; key: num lock
+(define key/print-screen     283 )      ; key: print screen
+(define key/pause            284 )      ; key: pause
+(define key/f1               290 )      ; key: f1
+(define key/f2               291 )      ; key: f2
+(define key/f3               292 )      ; key: f3
+(define key/f4               293 )      ; key: f4
+(define key/f5               294 )      ; key: f5
+(define key/f6               295 )      ; key: f6
+(define key/f7               296 )      ; key: f7
+(define key/f8               297 )      ; key: f8
+(define key/f9               298 )      ; key: f9
+(define key/f10              299 )      ; key: f10
+(define key/f11              300 )      ; key: f11
+(define key/f12              301 )      ; key: f12
+(define key/left-shift       340 )      ; key: shift left
+(define key/left-control     341 )      ; key: control left
+(define key/left-alt         342 )      ; key: alt left
+(define key/left-super       343 )      ; key: super left
+(define key/right-shift      344 )      ; key: shift right
+(define key/right-control    345 )      ; key: control right
+(define key/right-alt        346 )      ; key: alt right
+(define key/right-super      347 )      ; key: super right
+(define key/kb-menu          348 )      ; key: kb menu
+(define key/kp-0             320 )      ; key: keypad 0
+(define key/kp-1             321 )      ; key: keypad 1
+(define key/kp-2             322 )      ; key: keypad 2
+(define key/kp-3             323 )      ; key: keypad 3
+(define key/kp-4             324 )      ; key: keypad 4
+(define key/kp-5             325 )      ; key: keypad 5
+(define key/kp-6             326 )      ; key: keypad 6
+(define key/kp-7             327 )      ; key: keypad 7
+(define key/kp-8             328 )      ; key: keypad 8
+(define key/kp-9             329 )      ; key: keypad 9
+(define key/kp-decimal       330 )      ; key: keypad .
+(define key/kp-divide        331 )      ; key: keypad /
+(define key/kp-multiply      332 )      ; key: keypad *
+(define key/kp-subtract      333 )      ; key: keypad -
+(define key/kp-add           334 )      ; key: keypad +
+(define key/kp-enter         335 )      ; key: keypad enter
+(define key/kp-equal         336 )      ; key: keypad =
+(define key/back             4   )      ; key: android back button
+(define key/menu             5   )      ; key: android menu button
+(define key/volume-up        24  )      ; key: android volume up button
+(define key/volume-down      25  )      ; key: android volume down button
 
-(define MOUSE_BUTTON_LEFT    0) 
-(define MOUSE_BUTTON_RIGHT   1) 
-(define MOUSE_BUTTON_MIDDLE  2) 
-(define MOUSE_BUTTON_SIDE    3) 
-(define MOUSE_BUTTON_EXTRA   4) 
-(define MOUSE_BUTTON_FORWARD 5) 
-(define MOUSE_BUTTON_BACK    6) 
+(define mouse-button/left    0)
+(define mouse-button/right   1)
+(define mouse-button/middle  2)
+(define mouse-button/side    3)
+(define mouse-button/extra   4)
+(define mouse-button/forward 5)
+(define mouse-button/back    6)
 
 ;; Window-related functions
 (define init-window (foreign-lambda void "InitWindow" int int c-string))
