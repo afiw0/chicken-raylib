@@ -362,4 +362,22 @@
 
 (define measure-text (foreign-lambda int "MeasureText" c-string int))
 
+;; Scheme wrappers not present in original API
+
+(define-syntax %define-wrappers
+  (syntax-rules ()
+    ((_ procedure-name init fini additional-params ...)
+     (define (procedure-name additional-params ... thunk)
+       (init additional-params ...)
+       (let ((res (thunk)))
+         (fini)
+         res)))))
+
+;; Admittedly I'm not sure how useful this one is, but I'm adding it for symmetry
+(%define-wrappers with-window init-window close-window w h title)
+
+(%define-wrappers with-drawing begin-drawing end-drawing)
+
+(%define-wrappers with-mode-2d begin-mode-2d end-mode-2d camera)
+
 ) ;; end of module
