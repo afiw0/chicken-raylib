@@ -2,3 +2,4 @@
 (uri targz "https://github.com/meowstr/chicken-raylib/archive/refs/tags/v{egg-release}.tar.gz")
 (release "1.0")
 (release "1.0.1")
+(release "1.1.0")
